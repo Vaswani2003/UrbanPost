@@ -38,19 +38,18 @@ export default function Signup() {
                 name: name,
                 email: email,
                 password: password,
-                aadhar: fileInputRef.current.files[0],
             })
         });
 
         const data = await response.json();
 
         if (data.success) {
-            navigate('/login');
+            navigate('/');
         }
         else{
             alert('Signup failed!');
         }
-    }
+    };
 
     return (
       <div className="login-page" style={{display: "grid", gridTemplateColumns: "1fr 1fr", height: "100vh"}}>
