@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Pot hole near Gandhi Hospital Road number 20, 5000 098",
+    "category": "Infrastructure",
+    "description": "A large pothole has formed near Gandhi Hospital on Road Number 20, postal code 5000 098, posing a hazard to drivers and pedestrians.",
+    "timestamp": "2024-06-09T11:35:45.270Z",
+    "imageName": "pothole.jpg",
+    "username": "Praneeth"
+  },
+  {
+    "title": "Solar-Powered Streetlights for Energy Efficiency",
+    "category": "Sustainability",
+    "description": "Implementing solar-powered streetlights can enhance energy efficiency and reduce electricity costs in urban areas.",
+    "timestamp": "2024-06-09T13:24:54.081Z",
+    "imageName": "on stage.jpeg",
+    "username": "Preethika"
+  },
+  {
+    "title": "Traffic Lights Broken at RJ Crossroad",
+    "category": "Traffic",
+    "description": "The traffic lights at RJ Crossroad are malfunctioning, leading to traffic congestion and potential safety hazards.",
+    "timestamp": "2024-06-09T13:26:17.545Z",
+    "imageName": "FELLOW LEADS.jpeg",
+    "username": "Shivani"
+  },
+  {
+    "title": "Rainwater Harvesting Systems for Public Buildings",
+    "category": "Sustainability",
+    "description": "Installing rainwater harvesting systems in public buildings can conserve water and promote sustainable water management practices.",
+    "timestamp": "2024-06-09T13:26:17.545Z",
+    "imageName": "FELLOW LEADS.jpeg",
+    "username": "Anika"
+  },
+  {
+    "title": "Need for Pedestrian Bridge over Busy Highway",
+    "category": "Infrastructure",
+    "description": "A pedestrian bridge is urgently needed over the busy highway to ensure the safety of people crossing and reduce traffic accidents.",
+    "timestamp": "2024-06-09T14:47:10.796Z",
+    "imageName": "brij.jpg",
+    "username": "Vinamra"
+  }
+]
