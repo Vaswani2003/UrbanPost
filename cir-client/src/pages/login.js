@@ -18,23 +18,16 @@ export default function Login() {
 
     const handleLogin = async () => {
         const response = await fetch('http://localhost:5000/login', {
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({
-                email: email,
-                password: password
-            
-            })
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({ email: email, password: password})
         });
 
         const data = await response.json();
 
         if (data.success) {
-            navigate('/');
+            navigate('/landing');
         }
-        else{
+        else{   
             alert('Login failed!');
         }
     }
