@@ -107,35 +107,29 @@ export default function Landing() {
           <div style={{display: 'flex', flexDirection: 'column', marginBottom:'20px'}}>
 
         {/* Title */}
-        <Typography variant="h6" component="div" sx={{ color: 'black' }}>
-          {post.title}
-        </Typography>
+        <Typography variant="h6" component="div" sx={{ color: 'black' }}> {post.title} </Typography>
 
         {/* Username and Timestamp */}
         <div style={{display: 'flex', justifyContent: 'start', alignItems: 'baseline'}}>
-          <Typography variant="body2" component="span" sx={{ color: 'gray', marginRight: '10px' }}>
-            {post.username}
-          </Typography>
-          <Typography variant="body2" component="span" sx={{ color: 'gray' }}>
-          {new Date(post.timestamp).toLocaleDateString()}
-          </Typography>
+          <Typography variant="body2" component="span" sx={{ color: 'gray', marginRight: '10px' }}> {post.username} </Typography>
+          
+          <Typography variant="body2" component="span" sx={{ color: 'gray' }}> {new Date(post.timestamp).toLocaleDateString()} </Typography>
+          
         </div>
 
         {/* Description */}
-        <Typography variant="body1" component="div" sx={{ color: 'black', marginTop:'10px' }}>
-          {post.description}
-        </Typography>
+        <Typography variant="body1" component="div" sx={{ color: 'black', marginTop:'10px' }}> {post.description} </Typography>
 
-          </div>
-
-        </Box>
       </div>
+
+    </Box>
+    </div>
     ))}
 
-          </Masonry>
+    </Masonry>
 
-        </div>       
-      </div>
-    </div>
-  );
+</div>       
+</div>
+</div>
+);
 }
