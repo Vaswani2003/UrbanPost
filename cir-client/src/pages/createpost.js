@@ -8,7 +8,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ViewComfyIcon from '@mui/icons-material/ViewComfy'
 import { useNavigate } from 'react-router-dom';
 
-export default function Landing() {
+export default function Createpost() {
   const Navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
