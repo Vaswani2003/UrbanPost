@@ -26,6 +26,12 @@ class ConfigSettings(BaseSettings):
     CORS_ALLOW_METHODS: list[str] = ["*"]
     CORS_ALLOW_HEADERS: list[str] = ["*"]
 
+    # Database Configuration
+    DATABASE_URL: str = "mongodb://localhost:27017/UrbanPost"
+    DATABASE_NAME: str = "UrbanPost"
+    MAX_CONNECTIONS_COUNT: int = 10
+    MIN_CONNECTIONS_COUNT: int = 1
+
     # Logger Configuration
     LOG_DIRECTORY: str = "logs"
     LOG_FILE: str = "cir_backend.log"

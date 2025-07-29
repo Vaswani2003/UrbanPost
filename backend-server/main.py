@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.core.config import get_config_settings
 from src.core.case_conversion_middleware import CaseConversionMiddleware
 from src.core.logging import logger
+from src.db.init_db import initialize_database, close_mongo_connection
 from src.routers.monitoring import monitoring_router
 
 config = get_config_settings()
@@ -18,7 +19,15 @@ async def lifespan(app: FastAPI):
     logger.info("Starting Citizens Issues Registry Backend Server...")
     logger.info(f"Server configuration loaded - Environment: {getattr(config, 'ENVIRONMENT', 'development')}")
     logger.info(f"API Documentation available at: {config.DOCS_URL}")
-    yield
+    
+    # Initialize database connection
+    await initialize_database()
+    logger.info("Database initialized successfully")
+
+    yield # Yield control to the application
+    
+    # Cleanup on shutdown
+    await close_mongo_connection()
     logger.info("Shutting down Citizens Issues Registry Backend Server...")
     logger.info("Server stopped gracefully")
 
