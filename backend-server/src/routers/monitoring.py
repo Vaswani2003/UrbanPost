@@ -1,10 +1,12 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.responses import JSONResponse
 from src.core.logging import logger
 from src.core.config import get_config_settings
 import time
 from datetime import datetime, timezone
 import sys
+
+from src.models.test_db import TestDB
 
 monitoring_router = APIRouter(
     prefix="/monitoring",
@@ -80,6 +82,104 @@ async def status_check():
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=f"Status check failed: {str(e)}"
+        )
+    
+@monitoring_router.post("/test_db_write")
+async def test_db_write():
+    """
+    Test database write operation using Beanie ODM.
+    This endpoint is used to verify that the database is operational by writing a test document.
+    """
+    try:
+       
+        test_doc = TestDB(
+            name="API Test Entry",
+            purpose="Testing database connection via API endpoint"
+        )
+        
+        await test_doc.insert()
+
+        logger.info(f"Test document created with ID: {test_doc.id}")
+        
+        return JSONResponse(
+            status_code=status.HTTP_201_CREATED,
+            content={
+                "message": "Test document created successfully", 
+                "id": str(test_doc.id),
+                "name": test_doc.name,
+                "created_at": test_doc.created_at.isoformat()
+            }
+        )
+    
+    except Exception as e:
+        logger.error(f"Test DB write failed: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Test DB write failed: {str(e)}"
+        )
+
+@monitoring_router.get("/test_db_read")
+async def test_db_read():
+    """
+    Test database read operation using Beanie ODM.
+    This endpoint retrieves all test documents to verify database operations.
+    """
+    try:
+        # Get all test documents
+        test_docs = await TestDB.find_all().to_list()
+        
+        logger.info(f"Retrieved {len(test_docs)} test documents")
+        
+        docs_data = []
+
+        for doc in test_docs:
+            docs_data.append({
+                "id": str(doc.id),
+                "name": doc.name,
+                "purpose": doc.purpose,
+                "created_at": doc.created_at.isoformat()
+            })
+        
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={
+                "message": f"Retrieved {len(test_docs)} test documents",
+                "count": len(test_docs),
+                "documents": docs_data
+            }
+        )
+    
+    except Exception as e:
+        logger.error(f"Test DB read failed: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Test DB read failed: {str(e)}"
+        )
+
+@monitoring_router.delete("/test_db_cleanup")
+async def test_db_cleanup():
+    """
+    Clean up test documents from database.
+    This endpoint removes all test documents to keep the database clean.
+    """
+    try:
+        result = await TestDB.delete_all()
+        
+        logger.info(f"Deleted {result.deleted_count} test documents")
+        
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content={
+                "message": f"Deleted {result.deleted_count} test documents",
+                "deleted_count": result.deleted_count
+            }
+        )
+    
+    except Exception as e:
+        logger.error(f"Test DB cleanup failed: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Test DB cleanup failed: {str(e)}"
         )
 
 # Helper functions
