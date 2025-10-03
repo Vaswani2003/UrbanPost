@@ -1,6 +1,6 @@
-# 🏙️ CIR – Citizen Issues Repository
+# 🏙️ UrbanPost
 
-CIR (Citizen Issues Repository) is an open-source platform that enables citizens to report local infrastructure issues — such as potholes, broken traffic lights, or garbage dumps — and track their resolution. It aims to improve urban governance by connecting citizens with authorities in a transparent and actionable way.
+UrbanPost is an open-source platform that enables citizens to report local infrastructure issues — such as potholes, broken traffic lights, or garbage dumps — and track their resolution. It aims to improve urban governance by connecting citizens with authorities in a transparent and actionable way.
 
 ---
 
