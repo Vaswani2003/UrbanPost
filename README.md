@@ -27,21 +27,6 @@ Each service handles a specific responsibility (Users, Posts, Media, Notificatio
 ![UrbanPost Architecture](docs/architecture.png)
 
 
-## Repository structure
-
-urbanpost/
-├── api_gateway/
-├── services/
-│   ├── user_service/
-│   ├── posts_service/
-│   ├── media_service/
-│   └── notification_service/
-├── shared/
-│   ├── models/
-│   └── utils/
-├── docker-compose.yml
-└── README.md
-
 ## Development Status
 
 UrbanPost is actively under development and currently in the v1 phase, focusing on:
