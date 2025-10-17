@@ -24,11 +24,9 @@ Each service handles a specific responsibility (Users, Posts, Media, Notificatio
 
 ## 🏗️ Architecture
 
-```markdown
 ![UrbanPost Architecture](docs/architecture.png)
 
 
-```
 ## Repository structure
 
 urbanpost/
